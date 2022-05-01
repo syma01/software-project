@@ -1,0 +1,159 @@
+<html>
+<title>Happy Life Insurance</title>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="designL.css">
+</head>
+<body>
+<div class = "main">
+	<div class="top-right">
+		<button onclick="document.getElementById('id02').style.display='block'" class="reg">sign</button>
+	</div>
+
+ 
+ <div id="id02" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Name</b></label>
+      <input type="text" id="txtName" placeholder="Enter name" name="uname" required>
+
+      <label for="uname"><b>Surname</b></label>
+      <input type="text" id="txtSurname" placeholder="Enter surname" name="uname" required>
+
+      <label for="uname"><b>ID number</b></label>
+      <input type="text" id="txtID" placeholder="Enter id number" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" id="txtPassword" placeholder="Enter Password" name="psw" required>
+        
+      
+      <input type="button" id="bt" value="Save" onclick="saveFile()" />
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#ffffff">
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn2">cancel</button>
+
+    </div>
+  </form>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id02');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+	
+    <div class = "centered"> 
+	    <h1 style="font-family:helvetica; font-size: 2.5rem"><font color = "#F5F5F5">Happy Life Insurance <br>Company</h1></font>
+    </div>
+
+   
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto">Sign in</button>
+
+    <div id="id01" class="modal">
+  
+       <form class="modal-content animate" action="/action_page.php" method="post">
+    <div class="imgcontainer">
+       <span onclick="document.getElementById('id01').style.display='none'" class="close" title=" Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>ID number</b></label>
+      <input type="text" placeholder="Enter id number" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+        
+      
+      <button type ="submit" class ="loginInner" onclick="functionName()">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#ffffff">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">cancel</button>
+      
+    </div>
+  </form>
+</div>
+
+<script>
+function functionName(){
+window.open("index.html");
+}
+</script>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+  </div>
+
+
+	<div id = "footer"><br><br>
+  GET ALL INFORMATION BY SUBSCRIBE
+</div>
+
+</body>
+
+<script>
+    let saveFile = () => {
+      
+        // Get the data from each element on the form.
+        const name = document.getElementById('txtName');
+        const surname = document.getElementById('txtSurname');
+        const id = document.getElementById('txtID');
+        const password = document.getElementById('txtPassword')
+        
+        // This variable stores all the data.
+        let data = 
+            '\r Name: ' + name.value + ' \r\n ' + 
+            'Surname: ' +surname.value + ' \r\n ' + 
+            'ID: ' + id.value + ' \r\n ' + 
+            'Password: ' + password.value + ' \r\n ';
+        
+        // Convert the text to BLOB.
+        const textToBLOB = new Blob([data], { type: 'text/plain' });
+        const sFileName = 'formData.txt';    // The file to save the data.
+
+        let newLink = document.createElement("a");
+        newLink.download = sFileName;
+
+        if (window.webkitURL != null) {
+            newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+        }
+        else {
+            newLink.href = window.URL.createObjectURL(textToBLOB);
+            newLink.style.display = "none";
+            document.body.appendChild(newLink);
+        }
+
+        newLink.click(); 
+    }
+</script>
+
+</html>
